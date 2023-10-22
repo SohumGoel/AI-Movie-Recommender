@@ -17,7 +17,7 @@ This Movie Recommendation App is a web-based platform that allows users to input
 - Responsive web design for a seamless user experience.
 
 ## Demo
-[Link to live demo](#) - (To be updated with your demo URL)
+[Link to live demo](#) - (To be updated)
 
 ### Usage
 Access the web application by opening your web browser and navigating to http://localhost:3000 (or the port you specified during setup).
