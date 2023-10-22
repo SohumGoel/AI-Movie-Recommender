@@ -6,13 +6,9 @@ This Movie Recommendation App is a web-based platform that allows users to input
 - [Features](#features)
 - [Demo](#demo)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Features
 - Input and rate three movie titles with dynamic star rating.
