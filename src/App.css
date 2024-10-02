@@ -1,23 +1,151 @@
+/* App.css */
+
+/* Overall app container */
 .App {
   text-align: center;
-}
-
-.pageTitle {
-  font-size: 36px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #ff9900; /* Change the color to your preference */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds a subtle text shadow */
-}
-
-.App-header {
-  background-color: #282c34;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #1E1E2F;
+  color: #FFFFFF;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
+/* Header title styling */
+.pageTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #5adbff, #1f84ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Flexbox container for form and recommendations */
+.container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px; /* Adds some space from the title */
+  max-width: 1200px; /* Optional: limit the container width */
+  margin: 20px auto; /* Center the container on the screen */
+}
+
+/* Form styles */
+.movie-form {
+  flex: 1; /* Takes up available space */
+  max-width: 400px; /* Optional: limit the form width */
+  display: flex;
+  flex-direction: column; /* Stack inputs vertically */
+  gap: 10px; /* Space between inputs */
+  padding-right: 100px;
+  padding-left: 100px;
+}
+
+/* Input field styling */
+input {
+  width: 300px;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: 2px solid #FFFFFF;
+  border-radius: 8px;
+  background-color: #2C2C3C;
+  color: #FFFFFF;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+input:focus {
+  border-color: #00c6ff;
+}
+
+/* Star Rating Section */
+.starRating {
+  font-size: 38px;
+  margin: 10px 0;
+}
+
+.starRating span {
+  cursor: pointer;
+  color: #FFD700;
+  transition: color 0.3s ease;
+}
+
+.starRating span:hover,
+.starRating span:hover ~ span {
+  color: #ffeb3b;
+}
+
+/* Button styling */
+button {
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #00c6ff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #0072ff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Recommendation section */
+.recommendationSection {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #2C2C3C;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  color: #00c6ff;
+}
+
+/* Recommendations styles */
+.recommendations {
+  flex: 1; /* Takes up available space */
+  max-width: 400px; /* Optional: limit the recommendations width */
+  margin-left: 20px; /* Space between form and recommendations */
+  text-align: left; /* Align text to the left */
+  border: 1px solid #ff9900; /* Stylish border */
+  padding: 15px; /* Padding for inner spacing */
+  border-radius: 8px; /* Rounded corners */
+  background-color: rgba(255, 153, 0, 0.1); /* Light background color */
+}
+
+.recommendations ul {
+  list-style-type: none; /* Bullet points */
+  padding-left: 0; /* Indentation for bullet points */
+}
+
+.recommendations li {
+  margin-bottom: 5px; /* Space between list items */
+}
+
+/* Centering styles for title */
+.pageTitle {
+  text-align: center; /* Center the title */
+  margin-bottom: 20px; /* Space below the title */
+}
+
+/* Center the input section */
+.App-header {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center align all header items */
+}

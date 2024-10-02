@@ -23,15 +23,16 @@ app.post('/get-recommendations', async (req, res) => {
       `${movie.rating}/5 for ${movie.title}`
     ).join(', ');
 
-    const message = `Given a rating of ${movieDescriptions}, give me 10 movie recommendations I might enjoy, please don't write anything else in your response, just list them out with a line break in between each one`;
+    const message = `Given a rating of ${movieDescriptions}, give me 5 movie recommendations I might enjoy, please don't write anything else in your response, just list them out with a line break in between each one`;
 
 
     const chatCompletion = await openai.chat.completions.create({
       messages: [{ role: "user", content: message }],
-      model: "gpt-3.5-turbo",
+      model: "gpt-4o-mini",
     });
 
     const responseContent = chatCompletion.choices && chatCompletion.choices[0]?.message?.content;
+    console.log(responseContent);
     if (responseContent) {
       res.json({ recommendations: responseContent });
     } else {

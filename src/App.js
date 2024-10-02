@@ -17,8 +17,6 @@ function App() {
         headers: {
           'Content-Type': 'application/json'
         },
-        // You can send movie data to your backend if needed
-        // body: JSON.stringify({ movies: movies })
         body: JSON.stringify({ movies: movies })
       });
 
@@ -38,36 +36,42 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p className='pageTitle'>Movie Recommendation</p>
-        <form onSubmit={e => e.preventDefault()}>
-          {movies.map((movie, index) => (
-            <div key={index}>
-              <input
-                placeholder="Movie title"
-                value={movie.title}
-                onChange={e => handleInputChange(index, 'title', e.target.value)}
-              />
-              <div>
-                {[1, 2, 3, 4, 5].map(starNumber => (
-                  <span
-                    key={starNumber}
-                    onClick={() => handleStarClick(index, starNumber)}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    {starNumber <= movie.rating ? '★' : '☆'}
-                  </span>
-                ))}
+        <div className="container">
+          <form onSubmit={e => e.preventDefault()} className="movie-form">
+            {movies.map((movie, index) => (
+              <div key={index}>
+                <input
+                  placeholder="Movie title"
+                  value={movie.title}
+                  onChange={e => handleInputChange(index, 'title', e.target.value)}
+                />
+                <div className="starRating">
+                  {[1, 2, 3, 4, 5].map(starNumber => (
+                    <span
+                      key={starNumber}
+                      onClick={() => handleStarClick(index, starNumber)}
+                    >
+                      {starNumber <= movie.rating ? '★' : '☆'}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
-          <button onClick={handleSubmit}>Get Recommendations</button>
-        </form>
+            ))}
+            <button onClick={handleSubmit}>Get Recommendations</button>
+          </form>
 
-        {hasClickedRecommend && (
-          <div>
-            <h2>Recommendations:</h2>
-            <p>{recommendations}</p>
-          </div>
-        )}
+          {/* Recommendations Section */}
+          {hasClickedRecommend && (
+            <div className="recommendations">
+              <h2>Recommendations:</h2>
+              <ul>
+                {recommendations.split('\n').map((rec, index) => (
+                  <li key={index}>{rec}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       </header>
     </div>
   );
