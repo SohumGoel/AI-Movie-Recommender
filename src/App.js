@@ -67,59 +67,60 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <p className='pageTitle'>Movie Recommendation</p>
-        <div className="container">
-
-            {/* Google Login */}
+        <div className="top-bar">
+          {/* Google Login */}
           {!user ? (
             <GoogleLogin
               onSuccess={handleLoginSuccess}
               onError={handleLoginFailure}
             />
           ) : (
-            <div>
-              <h2>Welcome, {user.name}</h2>
-              <button onClick={handleLogout}>Logout</button>
-            </div>
+            <>
+              <span className="user-name">Welcome, {user.name}</span>
+              <button className="logout-btn" onClick={handleLogout}>Logout</button>
+            </>
+          )}
+        </div>
+
+        <p className='pageTitle'>Movie Recommendation</p>
+        <div className="container">
+          {user && (
+            <form onSubmit={e => e.preventDefault()} className="movie-form">
+              {movies.map((movie, index) => (
+                <div key={index}>
+                  <input
+                    placeholder="Movie title"
+                    value={movie.title}
+                    onChange={e => handleInputChange(index, 'title', e.target.value)}
+                  />
+                  <div className="starRating">
+                    {[1, 2, 3, 4, 5].map(starNumber => (
+                      <span
+                        key={starNumber}
+                        onClick={() => handleStarClick(index, starNumber)}
+                      >
+                        {starNumber <= movie.rating ? '★' : '☆'}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+              <button onClick={handleSubmit}>Get Recommendations</button>
+            </form>
           )}
 
-           {user && (
-              <form onSubmit={e => e.preventDefault()} className="movie-form">
-                {movies.map((movie, index) => (
-                  <div key={index}>
-                    <input
-                      placeholder="Movie title"
-                      value={movie.title}
-                      onChange={e => handleInputChange(index, 'title', e.target.value)}
-                    />
-                    <div className="starRating">
-                      {[1, 2, 3, 4, 5].map(starNumber => (
-                        <span
-                          key={starNumber}
-                          onClick={() => handleStarClick(index, starNumber)}
-                        >
-                          {starNumber <= movie.rating ? '★' : '☆'}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+          {/* Recommendations Section */}
+          {user && hasClickedRecommend && (
+            <div className="recommendations">
+              <h2>Recommendations:</h2>
+              <ul>
+                {recommendations.split('\n').map((rec, index) => (
+                  <li key={index}>{rec}</li>
                 ))}
-                <button onClick={handleSubmit}>Get Recommendations</button>
-              </form>
-           )}
-
-              {/* Recommendations Section */}
-              {user && hasClickedRecommend && (
-                <div className="recommendations">     
-                  <h2>Recommendations:</h2>
-                  <ul>
-                    {recommendations.split('\n').map((rec, index) => (
-                      <li key={index}>{rec}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              </ul>
             </div>
+          )}
+        </div>
       </header>
     </div>
   );
